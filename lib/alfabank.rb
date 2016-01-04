@@ -2,5 +2,9 @@ require "alfabank/version"
 require "alfabank/currency"
 
 module Alfabank
-  # Your code goes here...
+  class << self
+    def setup(&block)
+      
+    end
+  end
 end

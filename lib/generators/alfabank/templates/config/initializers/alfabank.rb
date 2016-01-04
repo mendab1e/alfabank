@@ -1,5 +1,5 @@
 Alfabank.setup do |config|
-  config.user_name = "username"
+  config.username = "username"
   config.password = "password"
   config.language = "ru"
   config.return_url = "finish.html"

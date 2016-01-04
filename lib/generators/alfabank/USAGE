@@ -1,8 +1,10 @@
 Description:
-    Explain the generator
+    Install alfabank to your app
 
 Example:
-    rails generate alfabank Thing
+    rails generate alfabank Payment
 
     This will create:
-        what/will/it/create
+        config/initializers/alfabank.rb
+        db/migrate/create_payments.rb
+        app/models/payment.rb
