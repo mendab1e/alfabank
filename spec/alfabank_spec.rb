@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe Alfabank do
-  it 'has a version number' do
-    expect(Alfabank::VERSION).not_to be nil
-  end
+  describe '.setup' do
+    let(:username) { "Soryu Asuka" }
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+    it 'works' do
+      described_class.setup { |config| config.username = username }
+      expect(described_class::Configuration.username).to eq(username)
+    end
   end
 end

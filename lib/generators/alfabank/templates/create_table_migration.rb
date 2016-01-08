@@ -6,10 +6,13 @@ class Create<%= table_name.camelize %> < ActiveRecord::Migration
       t.string :alfa_form_url
       t.boolean :payed
       t.boolean :use_binding
+      t.string :description
+      t.integer :user_id
 
       t.timestamps null: false
     end
 
     add_index :<%= table_name %>, :alfa_order_id
+    add_index :<%= table_name %>, :user_id
   end
 end
