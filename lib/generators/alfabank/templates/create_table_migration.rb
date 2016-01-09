@@ -5,7 +5,6 @@ class Create<%= table_name.camelize %> < ActiveRecord::Migration
       t.string :alfa_order_id
       t.string :alfa_form_url
       t.boolean :payed
-      t.boolean :use_binding
       t.string :description
       t.integer :user_id
 
