@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://test.paymentgate.ru/testpayment/rest/register.do
+    body:
+      encoding: UTF-8
+      string: userName=username&password=qwerty&description=Огурцы, салат и лук&language=ru&orderNumber=payment-hdYbpoxnmVEC1&amount=10000&currency=810&clientId=1&returnUrl=finish.html
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Sat, 09 Jan 2016 14:21:39 GMT
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - https://playground.paymentgate.ru
+    body:
+      encoding: UTF-8
+      string: '{"orderId":"b204ac41-90fa-41b7-9d47-f33ac4963a25","formUrl":"https://test.paymentgate.ru/testpayment/merchants/merchant_name/payment_ru.html?mdOrder=b204ac41-90fa-41b7-9d47-f33ac4963a25"}'
+    http_version: 
+  recorded_at: Sat, 09 Jan 2016 14:21:39 GMT
+- request:
+    method: post
+    uri: https://test.paymentgate.ru/testpayment/rest/register.do
+    body:
+      encoding: UTF-8
+      string: userName=username&password=qwerty&description=Огурцы, салат и лук&language=ru&orderNumber=payment-hdYbpoxnmVEC1&amount=10000&currency=810&clientId=1&returnUrl=finish.html
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Sat, 09 Jan 2016 14:21:39 GMT
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - https://playground.paymentgate.ru
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJlcnJvckNvZGUiOiIxIiwiZXJyb3JNZXNzYWdlIjoi0JfQsNC60LDQtyDR
+        gSDRgtCw0LrQuNC8INC90L7QvNC10YDQvtC8INGD0LbQtSDQvtCx0YDQsNCx
+        0L7RgtCw0L0ifQ==
+    http_version: 
+  recorded_at: Sat, 09 Jan 2016 14:21:39 GMT
+recorded_with: VCR 3.0.1
