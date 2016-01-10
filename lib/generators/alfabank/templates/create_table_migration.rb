@@ -4,7 +4,7 @@ class Create<%= table_name.camelize %> < ActiveRecord::Migration
       t.integer :price, null: false
       t.string :alfa_order_id
       t.string :alfa_form_url
-      t.boolean :payed
+      t.boolean :paid
       t.string :description
       t.integer :user_id
 
