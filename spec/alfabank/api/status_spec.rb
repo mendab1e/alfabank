@@ -1,20 +1,5 @@
 require 'spec_helper'
-
-class Payment
-  attr_accessor :price, :alfa_order_id, :alfa_form_url, :paid, :description
-  attr_accessor :user_id, :id
-
-  def initialize(price: 100, description: 'Огурцы, салат и лук', user_id: 1)
-    @id = 1
-    @price = price
-    @description = description
-    @user_id = user_id
-  end
-
-  def update_attribute(attr, val)
-    instance_variable_set("@#{attr}", val)
-  end
-end
+require 'payment_mock'
 
 describe Alfabank::Api::Status do
   before :each do
@@ -32,7 +17,7 @@ describe Alfabank::Api::Status do
     end
   end
 
-  let(:payment) { Payment.new }
+  let(:payment) { PaymentMock.new }
   let(:registration) { Alfabank::Api::Registration.new(payment) }
   subject { described_class.new(payment) }
 

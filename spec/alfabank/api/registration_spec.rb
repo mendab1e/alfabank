@@ -1,21 +1,5 @@
 require 'spec_helper'
-
-class Payment
-  attr_accessor :price, :alfa_order_id, :alfa_form_url, :payed, :description
-  attr_accessor :user_id, :id
-
-  def initialize(price: 100, description: 'Огурцы, салат и лук', user_id: 1)
-    @id = 1
-    @price = price
-    @description = description
-    @user_id = user_id
-  end
-
-  def update_attributes(alfa_order_id:, alfa_form_url:)
-    @alfa_order_id = alfa_order_id
-    @alfa_form_url = alfa_form_url
-  end
-end
+require 'payment_mock'
 
 describe Alfabank::Api::Registration do
   before :each do
@@ -33,7 +17,7 @@ describe Alfabank::Api::Registration do
     end
   end
 
-  let(:payment) { Payment.new }
+  let(:payment) { PaymentMock.new }
   subject { described_class.new(payment) }
 
   describe '#process' do
@@ -60,7 +44,7 @@ describe Alfabank::Api::Registration do
     end
 
     context 'order_number is not uniq' do
-      let(:first_obj) { described_class.new(Payment.new) }
+      let(:first_obj) { described_class.new(PaymentMock.new) }
 
       it 'works' do
         VCR.use_cassette("order_number_is_not_uniq") do
