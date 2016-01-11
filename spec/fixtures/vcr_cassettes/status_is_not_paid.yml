@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://test.paymentgate.ru/testpayment/rest/register.do
+    body:
+      encoding: UTF-8
+      string: userName=username&password=qwerty&description=Огурцы, салат и лук&language=ru&orderNumber=payment-LKWyoXTiFSNQ1&amount=10000&currency=810&clientId=1&returnUrl=finish.html
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Mon, 11 Jan 2016 09:11:10 GMT
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - https://playground.paymentgate.ru
+    body:
+      encoding: UTF-8
+      string: '{"orderId":"0c60a275-1087-44d3-a96b-593f727b2c6a","formUrl":"https://test.paymentgate.ru/testpayment/merchants/merchant_name/payment_ru.html?mdOrder=0c60a275-1087-44d3-a96b-593f727b2c6a"}'
+    http_version: 
+  recorded_at: Mon, 11 Jan 2016 09:11:11 GMT
+- request:
+    method: post
+    uri: https://test.paymentgate.ru/testpayment/rest/getOrderStatus.do
+    body:
+      encoding: UTF-8
+      string: userName=username&password=qwerty&orderId=0c60a275-1087-44d3-a96b-593f727b2c6a
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Mon, 11 Jan 2016 09:11:11 GMT
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - https://playground.paymentgate.ru
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJkZXBvc2l0QW1vdW50IjowLCJjdXJyZW5jeSI6IjgxMCIsImF1dGhDb2Rl
+        IjoyLCJjbGllbnRJZCI6IjEiLCJFcnJvckNvZGUiOiIwIiwiRXJyb3JNZXNz
+        YWdlIjoi0KPRgdC/0LXRiNC90L4iLCJPcmRlclN0YXR1cyI6MCwiT3JkZXJO
+        dW1iZXIiOiJwYXltZW50LUxLV3lvWFRpRlNOUTEiLCJBbW91bnQiOjEwMDAw
+        fQ==
+    http_version: 
+  recorded_at: Mon, 11 Jan 2016 09:11:11 GMT
+recorded_with: VCR 3.0.1

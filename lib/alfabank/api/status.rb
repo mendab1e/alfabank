@@ -10,7 +10,7 @@ module Alfabank::Api
 
       {
         order_status: response["OrderStatus"].to_i,
-        alfa_binding_id: response["bindingId"],
+        binding_id: response["bindingId"],
         card_number: response["Pan"],
         error_code: response["ErrorCode"].to_i,
         error_message: response["ErrorMessage"]
