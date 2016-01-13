@@ -1,6 +1,5 @@
 # Alfabank
-[![Build Status](https://travis-ci.org/mendab1e/alfabank.svg)](https://travis-ci.
-org/mendab1e/alfabank)
+[![Build Status](https://travis-ci.org/mendab1e/alfabank.svg)](https://travis-ci.org/mendab1e/alfabank)
 
 This gem provides support for the API of [Alfabank acquiring gateway](https://engine.paymentgate.ru/ecommerce/).
 
@@ -32,8 +31,9 @@ Run migration
 
 Set credentials and other options in  `config/initializers/alfabank.rb`
 
-Use `#register` to register a new order and obtain a payment form url.
-Use `#check_status` to get information about an order.
+* Use `#register` to register a new order and obtain a payment form url.
+
+* Use `#check_status` to get information about an order.
 
 ## Development
 
