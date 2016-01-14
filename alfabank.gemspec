@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Timur Yanberdin"]
   spec.email         = ["yanberdint@gmail.com"]
 
-  spec.summary       = "Alfabank payment gate" 
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "Unofficial alfabank payment gateway gem"
+  spec.homepage      = "https://github.com/mendab1e/alfabank"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
