@@ -58,5 +58,15 @@ describe Alfabank::Api::Status do
         end
       end
     end
+
+    context 'server error' do
+      it 'works' do
+        VCR.use_cassette("status_server_error") do
+          result = subject.process
+          expect(result[:order_status]).to eq(nil)
+          expect(result[:error_message]).to eq("Internal server error")
+        end
+      end
+    end
   end
 end
