@@ -3,7 +3,6 @@ Alfabank.setup do |config|
   config.password = 'password'
   config.language = 'ru'
   config.return_url = 'finish.html'
-  config.error_url = 'error.html'
   config.currency = Alfabank::Currency::RUB
   config.order_number_prefix = 'payment-'
   config.binding_username = 'binding_username'
