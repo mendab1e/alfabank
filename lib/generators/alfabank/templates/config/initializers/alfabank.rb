@@ -6,6 +6,7 @@ Alfabank.setup do |config|
   config.currency = Alfabank::Currency::RUB
   config.order_number_prefix = 'payment-'
   config.binding_username = 'binding_username'
+  config.binding_password = 'binding_password'
   config.mode = :test # :production
 end
 
