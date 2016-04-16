@@ -14,6 +14,7 @@ describe Alfabank::Api::Status do
       config.binding_username = 'binding_username'
       config.mode = :test
     end
+    allow(Alfabank.logger).to receive(:error)
   end
 
   let(:payment) { PaymentMock.new }

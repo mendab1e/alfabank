@@ -15,7 +15,8 @@ module Alfabank::Api
         error_code: response["ErrorCode"].to_i,
         error_message: response["ErrorMessage"]
       }
-    rescue
+    rescue => e
+      Alfabank.logger.error e
       {error_message: 'Internal server error'}
     end
 

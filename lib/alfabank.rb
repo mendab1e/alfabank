@@ -13,6 +13,8 @@ module Alfabank
   end
 
   class << self
+    attr_accessor :logger
+
     def setup(&block)
       yield Configuration
     end
