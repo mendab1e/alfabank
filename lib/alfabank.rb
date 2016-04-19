@@ -4,8 +4,8 @@ require "alfabank/api"
 require "alfabank/configuration"
 
 module Alfabank
-  def register
-    Api::Registration.new(self).process
+  def register(use_binding: false)
+    Api::Registration.new(self).process(use_binding: use_binding)
   end
 
   def check_status
