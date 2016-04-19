@@ -25,5 +25,14 @@ module Alfabank::Api
         self.class::URL
       end
     end
+
+    def credentials
+      username, password = if @use_binding
+        [Alfabank::Configuration.binding_username, Alfabank::Configuration.binding_password]
+      else
+        [Alfabank::Configuration.username, Alfabank::Configuration.password]
+      end
+      { userName: username, password: password }
+    end
   end
 end

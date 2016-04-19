@@ -4,7 +4,9 @@ module Alfabank::Api
     URL = "https://engine.paymentgate.ru/payment/rest/getOrderStatus.do"
     PAID = 2
 
-    def process
+    def process(use_binding: false)
+      @use_binding = use_binding
+
       response = make_request.parsed_response
       process_response(response)
 
@@ -32,11 +34,7 @@ module Alfabank::Api
     end
 
     def generate_params
-      {
-        userName: Alfabank::Configuration.username,
-        password: Alfabank::Configuration.password,
-        orderId: payment.alfa_order_id
-      }.map { |k, v| "#{k}=#{v}" }.join('&')
+      credentials.merge(orderId: payment.alfa_order_id).map { |k, v| "#{k}=#{v}" }.join('&')
     end
   end
 end

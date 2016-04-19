@@ -48,14 +48,5 @@ module Alfabank::Api
     def order_number
       (payment.respond_to?(:to_order_number) && payment.to_order_number) || payment.id
     end
-
-    def credentials
-      userName, password = if @use_binding
-        [Alfabank::Configuration.binding_username, Alfabank::Configuration.binding_password]
-      else
-        [Alfabank::Configuration.username, Alfabank::Configuration.password]
-      end
-      { userName: userName, password: password }
-    end
   end
 end

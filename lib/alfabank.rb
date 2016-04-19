@@ -8,8 +8,8 @@ module Alfabank
     Api::Registration.new(self).process(use_binding: use_binding)
   end
 
-  def check_status
-    Api::Status.new(self).process
+  def check_status(use_binding: false)
+    Api::Status.new(self).process(use_binding: use_binding)
   end
 
   def payment_order_binding(binding_id)
