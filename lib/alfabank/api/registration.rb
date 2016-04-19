@@ -29,7 +29,7 @@ module Alfabank::Api
         password: Alfabank::Configuration.password,
         description: payment.description,
         language: Alfabank::Configuration.language,
-        orderNumber: "#{Alfabank::Configuration.order_number_prefix}#{payment.id}",
+        orderNumber: "#{Alfabank::Configuration.order_number_prefix}#{order_number}",
         amount: payment.price * 100,
         currency: Alfabank::Configuration.currency,
         clientId: payment.user_id,
@@ -44,6 +44,10 @@ module Alfabank::Api
         alfa_order_id: response["orderId"],
         alfa_form_url: response["formUrl"]
       )
+    end
+
+    def order_number
+      payment.to_order_number || payment.id
     end
   end
 end
