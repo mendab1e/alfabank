@@ -4,7 +4,7 @@ module Alfabank::Api
     URL = "https://engine.paymentgate.ru/payment/rest/paymentOrderBinding.do"
 
     def process(binding_id)
-      return {url: payment.alfa_form_url} if payment.alfa_order_id
+      fail 'alfa_order_id is nil' if payment.alfa_order_id.nil?
       @binding_id = binding_id
 
       process_response(make_request.parsed_response)
