@@ -23,9 +23,12 @@ module Alfabank::Api
     private
 
     def process_response(response)
-      if response["OrderStatus"].to_i == PAID
-        payment.update_attribute(:paid, true)
-      end
+      return unless response["OrderStatus"].to_i == PAID
+
+      payment.paid = true
+      payment.binding_id = response["bindingId"] if payment.respond_to?(:binding_id)
+      payment.card_number = response["Pan"] if payment.respond_to?(:card_number)
+      payment.save(validate: false)
     end
 
     def generate_params
