@@ -1,6 +1,11 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'alfabank'
 require 'vcr'
+RSpec.configure do |config|
+  config.mock_with :rspec do |mocks|
+    mocks.allow_message_expectations_on_nil = true
+  end
+end
 
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"

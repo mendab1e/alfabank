@@ -1,6 +1,6 @@
 class PaymentMock
   attr_accessor :price, :alfa_order_id, :alfa_form_url, :paid, :description
-  attr_accessor :user_id, :id
+  attr_accessor :user_id, :id, :card_number, :binding_id
 
   def initialize(price: 100, description: 'Огурцы, салат и лук', user_id: 1)
     @id = 1
@@ -16,6 +16,9 @@ class PaymentMock
   def update_attributes(alfa_order_id:, alfa_form_url:)
     @alfa_order_id = alfa_order_id
     @alfa_form_url = alfa_form_url
+  end
+
+  def save(validate:)
   end
 end
 
