@@ -28,13 +28,17 @@ module Alfabank::Api
       return unless response["OrderStatus"].to_i == PAID
 
       payment.paid = true
-      payment.binding_id = response["bindingId"] if payment.respond_to?(:binding_id)
       payment.card_number = response["Pan"] if payment.respond_to?(:card_number)
+      if payment.respond_to?(:binding_id)
+        payment.binding_id = response["bindingId"]
+      end
       payment.save(validate: false)
     end
 
     def generate_params
-      credentials.merge(orderId: payment.alfa_order_id).map { |k, v| "#{k}=#{v}" }.join('&')
+      credentials.merge(orderId: payment.alfa_order_id).map do |k, v|
+        "#{k}=#{v}"
+      end.join('&')
     end
   end
 end

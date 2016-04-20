@@ -2,7 +2,7 @@ require 'httparty'
 
 module Alfabank::Api
   class Base
-    attr_reader :payment
+    attr_reader :payment, :use_binding
 
     def initialize(payment)
       @payment = payment
@@ -27,12 +27,11 @@ module Alfabank::Api
     end
 
     def credentials
-      username, password = if @use_binding
-        [Alfabank::Configuration.binding_username, Alfabank::Configuration.binding_password]
+      if use_binding
+        Alfabank::Configuration.binding_credentials
       else
-        [Alfabank::Configuration.username, Alfabank::Configuration.password]
+        Alfabank::Configuration.common_credentials
       end
-      { userName: username, password: password }
     end
   end
 end

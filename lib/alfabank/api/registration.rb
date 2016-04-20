@@ -28,7 +28,7 @@ module Alfabank::Api
       params = credentials.merge(
         description: payment.description,
         language: Alfabank::Configuration.language,
-        orderNumber: "#{Alfabank::Configuration.order_number_prefix}#{order_number}",
+        orderNumber: order_number,
         amount: payment.price * 100,
         currency: Alfabank::Configuration.currency,
         clientId: payment.user_id,
@@ -46,7 +46,8 @@ module Alfabank::Api
     end
 
     def order_number
-      (payment.respond_to?(:to_order_number) && payment.to_order_number) || payment.id
+      number = payment.to_order_number rescue payment.id
+      "#{Alfabank::Configuration.order_number_prefix}#{number}"
     end
   end
 end
