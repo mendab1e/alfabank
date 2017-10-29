@@ -3,9 +3,9 @@ module Alfabank::Api
     TEST_URL = "https://test.paymentgate.ru/testpayment/rest/register.do"
     URL = "https://engine.paymentgate.ru/payment/rest/register.do"
 
-    def process(binding_id = nil)
+    def process(use_binding: false)
       return {url: payment.alfa_form_url} if payment.alfa_order_id
-      @binding_id = binding_id
+      @use_binding = use_binding
 
       process_response(make_request.parsed_response)
     rescue => e
@@ -25,24 +25,15 @@ module Alfabank::Api
     end
 
     def generate_params
-      params = {
-        userName: Alfabank::Configuration.username,
-        password: Alfabank::Configuration.password,
+      params = credentials.merge(
         description: payment.description,
         language: Alfabank::Configuration.language,
-        orderNumber: "#{Alfabank::Configuration.order_number_prefix}#{payment.id}",
+        orderNumber: order_number,
         amount: payment.price * 100,
         currency: Alfabank::Configuration.currency,
         clientId: payment.user_id,
         returnUrl: Alfabank::Configuration.return_url
-      }
-
-      if @binding_id
-        params.merge!(
-          userName: Alfabank::Configuration.binding_username,
-          bindingId: @binding_id
-        )
-      end
+      )
 
       params.map { |k, v| "#{k}=#{v}" }.join('&')
     end
@@ -52,6 +43,11 @@ module Alfabank::Api
         alfa_order_id: response["orderId"],
         alfa_form_url: response["formUrl"]
       )
+    end
+
+    def order_number
+      number = payment.to_order_number rescue payment.id
+      "#{Alfabank::Configuration.order_number_prefix}#{number}"
     end
   end
 end
