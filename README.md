@@ -1,5 +1,5 @@
 # Alfabank
-[![Build Status](https://travis-ci.org/mendab1e/alfabank.svg)](https://travis-ci.org/mendab1e/alfabank) [![Gem Version](https://badge.fury.io/rb/alfabank.svg)](https://badge.fury.io/rb/alfabank)
+[![Build Status](https://travis-ci.org/mendab1e/alfabank.svg?branch=master)](https://travis-ci.org/mendab1e/alfabank) [![Gem Version](https://badge.fury.io/rb/alfabank.svg)](https://badge.fury.io/rb/alfabank)
 
 This gem provides support for the API of [Alfabank acquiring gateway](https://engine.paymentgate.ru/ecommerce/).
 
