@@ -1,6 +1,6 @@
 module Alfabank::Api
   class Status < Base
-    TEST_URL = "https://test.paymentgate.ru/testpayment/rest/getOrderStatus.do"
+    TEST_URL = 'https://web.rbsuat.com/ab/rest/getOrderStatus.do'
     URL = "https://engine.paymentgate.ru/payment/rest/getOrderStatus.do"
     PAID = 2
 
