@@ -8,9 +8,6 @@ module Alfabank::Api
       @use_binding = use_binding
 
       process_response(make_request.parsed_response)
-    rescue => e
-      Alfabank.logger.error e
-      {error: 'Internal server error'}
     end
 
     private
