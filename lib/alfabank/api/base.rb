@@ -19,11 +19,7 @@ module Alfabank::Api
     end
 
     def url
-      if Alfabank::Configuration.mode == :test
-        self.class::TEST_URL
-      elsif Alfabank::Configuration.mode == :production
-        self.class::URL
-      end
+      Alfabank::Configuration.mode == :production ? self.class::URL : self.class::TEST_URL
     end
 
     def credentials
