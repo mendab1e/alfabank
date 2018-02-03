@@ -1,6 +1,6 @@
 module Alfabank::Api
   class PaymentOrderBinding < Base
-    TEST_URL = "https://test.paymentgate.ru/testpayment/rest/paymentOrderBinding.do"
+    TEST_URL = 'https://web.rbsuat.com/ab/rest/paymentOrderBinding.do'
     URL = "https://engine.paymentgate.ru/payment/rest/paymentOrderBinding.do"
 
     def process(binding_id)

@@ -1,6 +1,6 @@
 module Alfabank::Api
   class Registration < Base
-    TEST_URL = "https://test.paymentgate.ru/testpayment/rest/register.do"
+    TEST_URL = 'https://web.rbsuat.com/ab/rest/register.do'
     URL = "https://engine.paymentgate.ru/payment/rest/register.do"
 
     def process(use_binding: false)
