@@ -66,15 +66,5 @@ describe Alfabank::Api::Registration do
         end
       end
     end
-
-    context 'server error' do
-      it 'works' do
-        VCR.use_cassette("server_error") do
-          result = subject.process
-          expect(result[:url]).to eq(nil)
-          expect(result[:error]).to eq("Internal server error")
-        end
-      end
-    end
   end
 end
