@@ -43,6 +43,7 @@ module Alfabank::Api
     end
 
     def order_number
+      # Custom order id if to_order_number is implemented by the user
       number = payment.to_order_number rescue payment.id
       "#{Alfabank::Configuration.order_number_prefix}#{number}"
     end

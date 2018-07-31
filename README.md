@@ -37,6 +37,8 @@ Set credentials and other options in  `config/initializers/alfabank.rb`
 
 Create a method to handle status request in your controller and insert a url for this method as a `return_url` param in `config/initializers/alfabank.rb`. Use `#check_status[:order_status]` to determine the status of an order and display it.
 
+By default the gem will call `id` to retrieve an identifier that will be used in Alfabank. If you want to customize the order number, implement `to_order_id` method in your class.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -52,4 +54,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/mendab
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
