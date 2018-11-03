@@ -39,6 +39,41 @@ Create a method to handle status request in your controller and insert a url for
 
 By default the gem will call `id` to retrieve an identifier that will be used in Alfabank. If you want to customize the order number, implement `to_order_id` method in your class.
 
+In order to pass information on ordered items you should implement `order_bundle` method, for example:
+```
+def order_bundle
+  {
+    orderBundle: {
+      orderCreationDate: '2013-07-12T13:51:00',
+      customerDetails: {
+        email: 'foo@bar.com',
+        phone: '79851231234'
+      },
+      cartItems: {
+        items: [
+          {
+            positionId: '1',
+            name: 'Metzeler Enduro 3 Sahara',
+            itemDetails: {
+              itemDetailsParams: [
+                { value: 'Metzeler ', name: 'brand' }
+              ]
+            },
+            quantity: { value: 1, measure: 'шт.' },
+            itemAmount: 8000,
+            itemCurrency: '643',
+            itemCode: 'NM-15',
+            discount: { discountType: 'percent', discountValue: '5' },
+            tax: { taxType: 1, taxSum: 111 },
+            itemPrice: 11267
+          }
+        ]
+      }
+    }
+  }
+end
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

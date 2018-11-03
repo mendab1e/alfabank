@@ -34,6 +34,7 @@ module Alfabank::Api
         taxSystem: GENERAL_TAX_SYSTEM
       )
 
+      # Information on ordered items
       params.merge(payment.order_bundle) if defined?(payment.order_bundle)
 
       params.map { |k, v| "#{k}=#{v}" }.join('&')
