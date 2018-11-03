@@ -2,6 +2,7 @@ module Alfabank::Api
   class Registration < Base
     TEST_URL = 'https://web.rbsuat.com/ab/rest/register.do'
     URL = "https://engine.paymentgate.ru/payment/rest/register.do"
+    GENERAL_TAX_SYSTEM = 1
 
     def process(use_binding: false)
       return {url: payment.alfa_form_url} if payment.alfa_order_id
@@ -29,8 +30,11 @@ module Alfabank::Api
         amount: payment.price * 100,
         currency: Alfabank::Configuration.currency,
         clientId: payment.user_id,
-        returnUrl: Alfabank::Configuration.return_url
+        returnUrl: Alfabank::Configuration.return_url,
+        taxSystem: GENERAL_TAX_SYSTEM
       )
+
+      params.merge(payment.order_bundle) if defined?(payment.order_bundle)
 
       params.map { |k, v| "#{k}=#{v}" }.join('&')
     end
