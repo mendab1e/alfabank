@@ -39,6 +39,14 @@ Create a method to handle status request in your controller and insert a url for
 
 By default the gem will call `id` to retrieve an identifier that will be used in Alfabank. If you want to customize the order number, implement `to_order_id` method in your class.
 
+If you want to customize the tax system, implement `tax system` method in your class. Possible values are:
+- 0 - общая;
+- 1 - упрощённая, доход;
+- 2 - упрощённая, доход минус расход;
+- 3 - единый налог на вменённый доход;
+- 4 - единый сельскохозяйственный налог;
+- 5 - патентная система налогообложения.
+
 In order to pass information on ordered items you should implement `order_bundle` method, for example:
 ```
 def order_bundle

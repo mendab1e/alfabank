@@ -2,7 +2,6 @@ module Alfabank::Api
   class Registration < Base
     TEST_URL = 'https://web.rbsuat.com/ab/rest/register.do'
     URL = "https://engine.paymentgate.ru/payment/rest/register.do"
-    GENERAL_TAX_SYSTEM = 1
 
     def process(use_binding: false)
       return {url: payment.alfa_form_url} if payment.alfa_order_id
@@ -30,9 +29,10 @@ module Alfabank::Api
         amount: payment.price * 100,
         currency: Alfabank::Configuration.currency,
         clientId: payment.user_id,
-        returnUrl: Alfabank::Configuration.return_url,
-        taxSystem: GENERAL_TAX_SYSTEM
+        returnUrl: Alfabank::Configuration.return_url
       )
+
+      params.merge(tax_system)
 
       # Information on ordered items
       params.merge(payment.order_bundle) if defined?(payment.order_bundle)
@@ -51,6 +51,11 @@ module Alfabank::Api
       # Custom order id if to_order_number is implemented by the user
       number = payment.to_order_number rescue payment.id
       "#{Alfabank::Configuration.order_number_prefix}#{number}"
+    end
+
+    def tax_system
+      # Custom tax system required for fiscalization
+      { taxSystem: payment.tax_system } if defined?(payment.tax_system)
     end
   end
 end
