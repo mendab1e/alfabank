@@ -9,5 +9,12 @@ module Alfabank
       )
       Alfabank::Request.new('register.do', params).perform
     end
+
+    def self.status(order_id: nil, order_number: nil)
+      raise ArgumentError if order_id.nil? && order_number.nil?
+
+      params = { orderId: order_id, orderNumber: order_number }.compact
+      Alfabank::Request.new('getOrderStatusExtended.do', params).perform
+    end
   end
 end
