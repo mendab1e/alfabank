@@ -1,6 +1,4 @@
 require "alfabank/currency"
-require "alfabank/api"
-require "alfabank/configuration"
 
 require 'alfabank/client'
 require 'alfabank/request'
