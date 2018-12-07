@@ -28,7 +28,11 @@ module Alfabank
     end
 
     def url
-      Alfabank.config.mode.to_s == 'production' ? BASE_URL + @method : TEST_BASE_URL + @method
+      if Alfabank.config.environment.to_s == 'production'
+        BASE_URL + @method
+      else
+        TEST_BASE_URL + @method
+      end
     end
   end
 end
